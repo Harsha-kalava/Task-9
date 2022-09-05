@@ -13,7 +13,7 @@ filter.addEventListener("keyup", filterItems);
 // Adding new input field
 let inputText = document.createElement("input");
 
-inputText.className = "another";
+inputText.className = "form-control mr-2";
 inputText.id = "another";
 inputText.setAttribute("type", "text");
 btn.appendChild(inputText);
@@ -64,14 +64,19 @@ function removeItem(e) {
 
 // Filter Items
 function filterItems(e) {
-	// convert text to lowercase
-	var text = e.target.value.toLowerCase();
-	// Get lis
-	var items = itemList.getElementsByTagName("li");
-	// Convert to an array
-	Array.from(items).forEach(function (item) {
-		var itemName = item.firstChild.textContent;
-		if (itemName.toLowerCase().indexOf(text) != -1) {
+	// converting text to lowercase
+	let text = e.target.value.toLowerCase();
+	// Fetching list
+	let items = itemList.getElementsByTagName("li");
+
+	// Converting Node list in to an array
+	let itemArr = Array.from(items);
+	// console.log(itemArr);
+
+	itemArr.forEach(function (item) {
+		let itemName = item.textContent.toLowerCase();
+		// itemName = itemName.toLowerCase();
+		if (itemName.indexOf(text) != -1) {
 			item.style.display = "block";
 		} else {
 			item.style.display = "none";
